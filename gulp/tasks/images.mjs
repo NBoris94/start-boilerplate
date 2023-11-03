@@ -16,20 +16,27 @@ const images = () => {
 
 const imagesWebp = () => {
     return gulp
-        .src(`${paths.src.images}/**/*`)
+        .src(`${paths.src.images}/**/*.{jpg,jpeg,png,gif}`)
         .pipe(webp())
         .pipe(gulp.dest(paths.dist.images))
 }
 
 const imagesAvif = () => {
     return gulp
-        .src(`${paths.src.images}/**/*`)
+        .src(`${paths.src.images}/**/*.{jpg,jpeg,png,gif}`)
         .pipe(avif({
             quality: 75
         }))
         .pipe(gulp.dest(paths.dist.images))
 }
 
-export { imagesWebp, imagesAvif }
+const imagesSvg = () => {
+    return gulp
+        .src(`${paths.src.images}/**/*.svg`)
+        .pipe(changed(paths.dist.images))
+        .pipe(gulp.dest(paths.dist.images));
+}
+
+export { imagesWebp, imagesAvif, imagesSvg }
 
 export default images
