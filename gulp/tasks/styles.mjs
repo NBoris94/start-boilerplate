@@ -11,7 +11,6 @@ import gulpIf from 'gulp-if'
 import autoprefixer from 'gulp-autoprefixer'
 import csso from "gulp-csso"
 import rename from 'gulp-rename'
-import gulpWebpCss from "gulp-webp-css"
 import { isProduction, paths } from "../config.mjs"
 
 const sassHandler = gulpSass(sass)
@@ -32,7 +31,6 @@ const styles = () => {
         .pipe(sourceMaps.init())
         .pipe(sassGlob())
         .pipe(sassHandler())
-        .pipe(gulpIf(isProduction, gulpWebpCss()))
         .pipe(gulpIf(isProduction, groupCssMediaQueries()))
         .pipe(gulpIf(isProduction, autoprefixer()))
         .pipe(gulpIf(isProduction, csso()))
