@@ -13,7 +13,7 @@ import watcher from './gulp/tasks/watcher.mjs'
 
 gulp.task('default', gulp.series(
     cleanDist,
-    gulp.parallel(html, styles, scripts, fonts, files, images, icons, favicon),
+    gulp.parallel(html, styles, scripts, fonts, files, imagesAvif, icons, favicon),
     gulp.parallel(server, watcher)
 ));
 
